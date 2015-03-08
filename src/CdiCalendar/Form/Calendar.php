@@ -35,6 +35,62 @@ class Calendar extends \CdiCommons\Form\BaseForm {
         $this->addCsrf();
         $this->addSubmit();
     }
+    
+    public function addMin(){
+        
+         /*
+         * Input Text
+         */
+        $this->add(array(
+            'name' => 'title',
+            'type' => 'Zend\Form\Element\Text',
+            'attributes' => array(
+                'required' => false,
+                'class' => "form-control",
+                'placeholder' => "xxx"
+            ),
+            'options' => array(
+                'label' => 'Titulo',
+                'description' => ''
+            )
+        ));
+        
+        /*
+         * Input TextArea
+         */
+        $this->add(array(
+            'name' => 'description',
+            'type' => 'Zend\Form\Element\Textarea',
+            'attributes' => array(
+                'required' => false,
+                'class' => "form-control",
+            ),
+            'options' => array(
+                'label' => 'Descripcion',
+                'description' => ''
+            )
+        ));
+        
+        
+        /*
+         * Input Date
+         */
+
+        $this->add(array(
+            'name' => 'scheduleDate',
+            'type' => 'Zend\Form\Element\Date',
+            'attributes' => array(
+                'required' => false,
+             'class' => "form-control",
+                  'data-date-format' => 'YYYY/MM/DD HH:II:SS',
+            ),
+            'options' => array(
+                'label' => 'Fecha Y Hora',
+                'description' => ''
+            )
+        ));
+        
+    }
 
     public function InputFilter() {
 
