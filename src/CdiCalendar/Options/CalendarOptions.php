@@ -7,14 +7,14 @@ use Zend\Stdlib\AbstractOptions;
 class CalendarOptions extends AbstractOptions implements
 CalendarOptionsInterface {
 
-    protected $entity;
+    protected $calendarEntityClass;
    
-    function getEntity() {
-        return $this->entity;
+    function getCalendarEntityClass() {
+        return $this->calendarEntityClass;
     }
 
-    function setEntity($entity) {
-        $this->entity = $entity;
+    function setCalendarEntityClass($calendarEntityClass) {
+        $this->calendarEntityClass = $calendarEntityClass;
     }
 
 

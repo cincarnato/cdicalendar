@@ -22,20 +22,11 @@ class Module {
         
     }
 
-    public function getServiceConfig() {
-        return array(
-            'invokables' => array(
-                'cdicalendar_service' => 'CdiCalendar\Service\Calendar',
-            ),
-            'factories' => array(
-                'cdicalendar_options' => function ($sm) {
-                    $config = $sm->get('Config');
-                    return new Options\CalendarOptions(isset($config['CalendarOptions']) ? $config['CalendarOptions'] : array());
-                },
-                'cdicalendar_factory' => 'CdiCalendar\Service\Factory\CalendarFactory',
-               
-            ),
-        );
+      public function getServiceConfig()
+    {
+        return include __DIR__ . '/config/services.config.php';
     }
+    
+
 
 }

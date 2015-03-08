@@ -1,15 +1,13 @@
 <?php
 
-namespace ZfcUserAdmin\Mapper;
+namespace CdiCalendar\Mapper;
 
-use ZfcUser\Mapper\User as ZfcUserMapper;
 use Zend\Db\ResultSet\HydratingResultSet;
 use Zend\Paginator;
 
-class UserZendDb extends ZfcUserMapper
-{
-    public function findAll()
-    {
+class CalendarZendDb {
+
+    public function findAll() {
         $select = $this->getSelect($this->tableName);
         $select->order(array('username ASC', 'display_name ASC', 'email ASC'));
         //$resultSet = $this->select($select);
@@ -24,11 +22,23 @@ class UserZendDb extends ZfcUserMapper
     /**
      * @param \ZfcUser\Entity\UserInterface $entity
      */
-    public function remove($entity)
-    {
+    public function remove($entity) {
         $this->getEventManager()->trigger('remove.pre', $this, array('entity' => $entity));
         $id = $entity->getId();
         $this->delete(array('user_id' => $id));
         $this->getEventManager()->trigger('remove', $this, array('entity' => $entity));
     }
+
+    public function findById($id) {
+        
+    }
+
+    public function insert($user) {
+        
+    }
+
+    public function update($user) {
+        
+    }
+
 }

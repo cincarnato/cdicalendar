@@ -30,7 +30,15 @@ Installation via composer, agregar a composer.json:
 Dependencias
 ============
 
--
+- cdi/cdicommons
+- cdi/cdiuser
+```
+"require" : {
+    "cdi/cdicommons": "dev-master",
+    "cdi/cdiuser": "dev-master"
+}
+```
+
 =======
 cdicalendar
 ========
