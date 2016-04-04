@@ -14,7 +14,7 @@ class Calendar extends \CdiCommons\Form\BaseForm {
 
 
 
-    public function __construct() {
+    public function __construct($em) {
 
 
         parent::__construct('CalendarForm');
@@ -29,42 +29,25 @@ class Calendar extends \CdiCommons\Form\BaseForm {
             'type' => 'Zend\Form\Element\Hidden',
         ));
 
-        $this->addSchedules();
+        $this->addSchedules($em);
 
         $this->addCsrf();
         $this->addSubmit();
     }
 
-    protected function addSchedules() {
-        $subForm = new \CdiCalendar\Form\Schedule();
+    protected function addSchedules($em) {
+        $subForm = new \CdiCalendar\Form\Schedule($em);
         $subForm->setName("monday");
         $subForm->get('dayOfWeek')->setValue('1');
         $this->add($subForm);
         
-         $subForm = new \CdiCalendar\Form\Schedule();
+         $subForm = new \CdiCalendar\Form\Schedule($em);
         $subForm->setName("tuesday");
           $subForm->get('dayOfWeek')->setValue('2');
         $this->add($subForm);
     }
 
-    protected function addCsrf() {
-        $this->add(array(
-            'type' => 'Zend\Form\Element\Csrf',
-            'name' => 'csrf'
-        ));
-    }
 
-    protected function addSubmit() {
-
-        $this->add(array(
-            'name' => 'submit',
-            'type' => 'Zend\Form\Element\Submit',
-            'attributes' => array(
-                'type' => 'submit',
-                'value' => 'Cerrar'
-            )
-        ));
-    }
 
     public function InputFilter() {
 

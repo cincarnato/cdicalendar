@@ -8,78 +8,78 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'cdicalendar' => 'CdiCalendar\Controller\CalendarController',
+            'CdiCalendar\Controller\Calendar' => 'CdiCalendar\Controller\CalendarController',
             'cdiagenda' => 'CdiCalendar\Controller\AgendaController',
         ),
     ),
     'router' => array(
         'routes' => array(
-                    'agenda' => array(
-                        'type' => 'Literal',
-                        'priority' => 1000,
+            'agenda' => array(
+                'type' => 'Literal',
+                'priority' => 1000,
+                'options' => array(
+                    'route' => '/cdiagenda',
+                    'defaults' => array(
+                        'controller' => 'agenda',
+                        'action' => 'index',
+                    ),
+                ),
+                'child_routes' => array(
+                    'list' => array(
+                        'type' => 'Segment',
                         'options' => array(
-                            'route' => '/cdiagenda',
+                            'route' => '/list[/:p]',
                             'defaults' => array(
-                                'controller' => 'agenda',
-                                'action' => 'index',
+                                'controller' => 'zfcuseradmin',
+                                'action' => 'list',
                             ),
                         ),
-                        'child_routes' => array(
-                            'list' => array(
-                                'type' => 'Segment',
-                                'options' => array(
-                                    'route' => '/list[/:p]',
-                                    'defaults' => array(
-                                        'controller' => 'zfcuseradmin',
-                                        'action' => 'list',
-                                    ),
-                                ),
-                            ),
-                            'create' => array(
-                                'type' => 'Literal',
-                                'options' => array(
-                                    'route' => '/create',
-                                    'defaults' => array(
-                                        'controller' => 'zfcuseradmin',
-                                        'action' => 'create'
-                                    ),
-                                ),
-                            ),
-                            'edit' => array(
-                                'type' => 'Segment',
-                                'options' => array(
-                                    'route' => '/edit/:calendarId',
-                                    'defaults' => array(
-                                        'controller' => 'zfcuseradmin',
-                                        'action' => 'edit',
-                                        'userId' => 0
-                                    ),
-                                ),
-                            ),
-                            'remove' => array(
-                                'type' => 'Segment',
-                                'options' => array(
-                                    'route' => '/remove/:calendarId',
-                                    'defaults' => array(
-                                        'controller' => 'zfcuseradmin',
-                                        'action' => 'remove',
-                                        'userId' => 0
-                                    ),
-                                ),
+                    ),
+                    'create' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/create',
+                            'defaults' => array(
+                                'controller' => 'zfcuseradmin',
+                                'action' => 'create'
                             ),
                         ),
-                'calendar' => array(
-                    'type' => 'segment',
-                    'options' => array(
-                        'route' => '/cdicalendar[/:action][/:id]',
-                        'constraints' => array(
-                            'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            'id' => '[0-9]+',
+                    ),
+                    'edit' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/edit/:calendarId',
+                            'defaults' => array(
+                                'controller' => 'zfcuseradmin',
+                                'action' => 'edit',
+                                'userId' => 0
+                            ),
                         ),
-                        'defaults' => array(
-                            'controller' => 'CdiCalendar\Controller\Calendar',
-                            'action' => 'abm',
+                    ),
+                    'remove' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/remove/:calendarId',
+                            'defaults' => array(
+                                'controller' => 'zfcuseradmin',
+                                'action' => 'remove',
+                                'userId' => 0
+                            ),
                         ),
+                    ),
+                ),
+            ),
+            'calendar' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/cdicalendar[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'CdiCalendar\Controller\Calendar',
+                        'action' => 'abm',
                     ),
                 ),
             ),

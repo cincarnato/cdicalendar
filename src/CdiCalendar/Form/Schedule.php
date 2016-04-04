@@ -14,7 +14,7 @@ use Zend\Form\Fieldset;
 class Schedule extends Fieldset  {
 
 
-    public function __construct() {
+    public function __construct($em) {
 
 
         parent::__construct('scheduleForm');
@@ -23,7 +23,7 @@ class Schedule extends Fieldset  {
         $this->setAttribute('role', "form");
         
          $this
-             ->setHydrator(new DoctrineHydrator(false))
+             ->setHydrator(new DoctrineHydrator($em))
              ->setObject(new \CdiCalendar\Entity\Schedule())
          ;
         
@@ -59,7 +59,8 @@ class Schedule extends Fieldset  {
             'attributes' => array(
                 'required' => true,
                 'class' => "form-control",
-                'placeholder' => "StartTime"
+                'placeholder' => "StartTime",
+                'value' => '00:00'
             ),
             'options' => array(
                 'label' => 'StartTime',
@@ -72,7 +73,8 @@ class Schedule extends Fieldset  {
             'attributes' => array(
                 'required' => true,
                 'class' => "form-control",
-                'placeholder' => "EndTime"
+                'placeholder' => "EndTime",
+                  'value' => '00:00'
             ),
             'options' => array(
                 'label' => 'EndTime',

@@ -9,7 +9,7 @@ use Doctrine\ORM\Proxy\Proxy;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Zend\InputFilter\InputFilter;
 use Zend\Form\Annotation;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  *
  * @ORM\Entity
@@ -17,7 +17,7 @@ use Zend\Form\Annotation;
  *
  * @author Cristian Incarnato
  */
-class Calendar extends \CdiCalendar\Entity\AbstractEntity {
+class Calendar extends \CdiCommons\Entity\AbstractEntity {
 
     /**
      * @var int

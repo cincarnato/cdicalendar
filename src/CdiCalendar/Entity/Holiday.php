@@ -17,7 +17,7 @@ use Zend\Form\Annotation;
  *
  * @author Cristian Incarnato
  */
-class Holiday extends \CdiCalendar\Entity\AbstractEntity {
+class Holiday extends \CdiCommons\Entity\AbstractEntity {
 
       /**
      * @var int

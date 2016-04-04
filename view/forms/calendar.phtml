@@ -11,17 +11,24 @@ echo $this->form()->openTag($form);
 
 <?php echo $this->formHidden($form->get('id')); ?>
 
-<?php $monday = $product->get('monday'); ?>
+<label><?php echo $this->translate("Monday"); ?></label>
+<?php $monday = $form->get('monday'); ?>
 <?php echo $this->formRow($monday->get('dayOfWeek')); ?>
-<?php echo $this->formRow($monday->get('startTime')); ?>
-<?php echo $this->formRow($monday->get('endTime')); ?>
+<?php echo $this->partial("form/element",array("element" => $monday->get('dayOfWeek'))); ?>
 
-<?php $tuesday = $product->get('tuesday'); ?>
+<?php echo $this->partial("form/element",array("element" => $monday->get('startTime'))); ?>
+<?php echo $this->partial("form/element",array("element" => $monday->get('endTime'))); ?>
+
+<br>
+<label><?php echo $this->translate("Tuesday"); ?></label>
+<?php $tuesday = $form->get('tuesday'); ?>
 <?php echo $this->formRow($tuesday->get('dayOfWeek')); ?>
+
 <?php echo $this->formRow($tuesday->get('startTime')); ?>
 <?php echo $this->formRow($tuesday->get('endTime')); ?>
 
 <?PHP
-
+ echo $this->formHidden($form->get('csrf'));
+ echo $this->formElement($form->get('submit'));
 echo $this->form()->closeTag($form);
 ?>

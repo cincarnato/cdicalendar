@@ -17,7 +17,7 @@ use Zend\Form\Annotation;
  *
  * @author Cristian Incarnato
  */
-class DayOfWeek extends \CdiCalendar\Entity\AbstractEntity {
+class DayOfWeek extends \CdiCommons\Entity\AbstractEntity {
 
       /**
      * @var int

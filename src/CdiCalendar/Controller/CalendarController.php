@@ -35,18 +35,11 @@ class CalendarController extends AbstractActionController {
         $grid->hiddenColumn('createdAt');
         $grid->hiddenColumn('updatedAt');
         $grid->hiddenColumn('createdBy');
-        $grid->hiddenColumn('profilePicture');
-        $grid->hiddenColumn('profileStatus');
-        $grid->hiddenColumn('profileNick');
-        $grid->hiddenColumn('lastUpdatedBy');
-        $grid->hiddenColumn('lastState');
-        $grid->hiddenColumn('state');
 
-        // $grid->addEditOption("Edit", "left", "btn btn-success fa fa-edit");
-        $grid->addExtraColumn("Profile", "<a  class='fa fa-user btn btn-primary btn-xs' onclick='showProfile({{id}})' href='#'> Profile</a>      ", "right", false);
 
-        $grid->addExtraColumn("Codigo", "<a style='color:blue; font-size: 10px;' class='fa fa-dot-circle-o' href='/wa/code/{{id}}'></a>      ", "right", false);
+        $grid->addExtraColumn("edit", "<a  class='fa fa-user btn btn-primary btn-xs' onclick='showProfile({{id}})' href='#'> Profile</a>      ", "right", false);
 
+      
         $grid->addDelOption("Del", "left", "btn btn-warning fa fa-trash");
 //        $grid->addNewOption("Add", "btn btn-primary fa fa-plus", " Agregar");
         $grid->setTableClass("table-condensed customClass");
@@ -55,14 +48,15 @@ class CalendarController extends AbstractActionController {
     }
 
     public function newAction() {
-        $form = new \CdiCalendar\Form\Calendar();
-        $product = new Product();
-        $form->bind($product);
+        $form = new \CdiCalendar\Form\Calendar($this->getEntityManager());
+        $calendar = new \CdiCalendar\Entity\Calendar();
+          $form->setHydrator(new \DoctrineModule\Stdlib\Hydrator\DoctrineObject($this->getEntityManager()));
+        $form->bind($calendar);
         $request = $this->getRequest();
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
-                var_dump($product);
+                var_dump($calendar);
             }
         }
         return array(
