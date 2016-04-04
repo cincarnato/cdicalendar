@@ -15,13 +15,13 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  *
  * @author cincarnato
  */
-class CalendarFactory implements FactoryInterface {
+class AgendaFactory implements FactoryInterface {
 
     public function createService(ServiceLocatorInterface $serviceLocator) {
         $options = $serviceLocator->get('cdicalendar_options');
-        $Calendar = new \CdiCalendar\Service\Calendar($options);
-        $Calendar->initService();
-        return $Calendar;
+        $Agenda = new \CdiCalendar\Service\Agenda($options);
+        $Agenda->initService();
+        return $Agenda;
     }
 
 }

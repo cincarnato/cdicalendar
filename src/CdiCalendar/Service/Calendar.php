@@ -10,12 +10,12 @@ use CdiCommons\EventManager\EventProvider;
  *
  * @author cincarnato
  */
-class Calendar extends EventProvider implements ServiceManagerAwareInterface{
+class Agenda extends EventProvider implements ServiceManagerAwareInterface{
 
     /**
      * @var UserMapperInterface
      */
-    protected $calendarMapper;
+    protected $agendaMapper;
 
     /**
      * @var ServiceManager
@@ -23,7 +23,7 @@ class Calendar extends EventProvider implements ServiceManagerAwareInterface{
     protected $serviceManager;
 
     /**
-     * @var \CdiCalendar\Options\CalendarOptionsInterface
+     * @var \CdiCalendar\Options\AgendaOptionsInterface
      */
     protected $options;
 
@@ -104,17 +104,17 @@ class Calendar extends EventProvider implements ServiceManagerAwareInterface{
 
     
     
-    public function getCalendarMapper()
+    public function getAgendaMapper()
     {
-        if (null === $this->calendarMapper) {
-            $this->calendarMapper = $this->getServiceManager()->get('cdicalendar_calendar_mapper');
+        if (null === $this->agendaMapper) {
+            $this->agendaMapper = $this->getServiceManager()->get('cdiagenda_agenda_mapper');
         }
-        return $this->calendarMapper;
+        return $this->agendaMapper;
     }
 
-    public function setUserMapper(CalendarMapperInterface $calendarMapper)
+    public function setUserMapper(AgendaMapperInterface $agendaMapper)
     {
-        $this->calendarMapper = $calendarMapper;
+        $this->agendaMapper = $agendaMapper;
         return $this;
     }
 
@@ -127,7 +127,7 @@ class Calendar extends EventProvider implements ServiceManagerAwareInterface{
     public function getOptions()
     {
         if (!$this->options instanceof ModuleOptions) {
-            $this->setOptions($this->getServiceManager()->get('cdicalendar_options'));
+            $this->setOptions($this->getServiceManager()->get('cdiagenda_options'));
         }
         return $this->options;
     }

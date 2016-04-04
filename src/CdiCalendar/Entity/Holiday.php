@@ -13,13 +13,13 @@ use Zend\Form\Annotation;
 /**
  *
  * @ORM\Entity
- * @ORM\Table(name="cdi_calendar")
+ * @ORM\Table(name="cdi_holiday")
  *
  * @author Cristian Incarnato
  */
-class Calendar extends \CdiCalendar\Entity\AbstractEntity {
+class Holiday extends \CdiCalendar\Entity\AbstractEntity {
 
-    /**
+      /**
      * @var int
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -28,24 +28,22 @@ class Calendar extends \CdiCalendar\Entity\AbstractEntity {
      */
     protected $id;
 
-    /**
+     /**
      * @var string
      * @Annotation\Type("Zend\Form\Element\Text")
-     * @Annotation\Options({"label":"Nombre:"})
+     * @Annotation\Options({"label":"Name:"})
      * @Annotation\Validator({"name":"StringLength", "options":{"min":1, "max":25}})
      * @ORM\Column(type="string", length=25, unique=false, nullable=true)
      */
     protected $name;
-
-    /**
-     * @var 
-     * @ORM\OneToMany(targetEntity="CdiCalendar\Entity\Schedule", mappedBy="calendar")
+    
+     /**
+     * @var string
+     * @Annotation\Type("Zend\Form\Element\Text")
+     * @Annotation\Options({"label":"Date:"})
+     * @ORM\Column(type="date", length=25, unique=false, nullable=true)
      */
-    protected $schedule;
-
-    public function __construct() {
-        $this->schedule = new ArrayCollection();
-    }
+    protected $date;
 
     function getId() {
         return $this->id;
@@ -53,10 +51,6 @@ class Calendar extends \CdiCalendar\Entity\AbstractEntity {
 
     function getName() {
         return $this->name;
-    }
-
-    function getSchedule() {
-        return $this->schedule;
     }
 
     function setId($id) {
@@ -67,12 +61,15 @@ class Calendar extends \CdiCalendar\Entity\AbstractEntity {
         $this->name = $name;
     }
 
-    function setSchedule($schedule) {
-        $this->schedule = $schedule;
+    function getDate() {
+        return $this->date;
     }
 
-    function addSchedule(\CdiCalendar\Entity\Schedule $schedule) {
-        $this->schedule[] = $schedule;
+    function setDate($date) {
+        $this->date = $date;
     }
+
+
+
 
 }

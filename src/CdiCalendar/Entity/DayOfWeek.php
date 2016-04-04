@@ -13,13 +13,13 @@ use Zend\Form\Annotation;
 /**
  *
  * @ORM\Entity
- * @ORM\Table(name="cdi_calendar")
+ * @ORM\Table(name="cdi_day_of_week")
  *
  * @author Cristian Incarnato
  */
-class Calendar extends \CdiCalendar\Entity\AbstractEntity {
+class DayOfWeek extends \CdiCalendar\Entity\AbstractEntity {
 
-    /**
+      /**
      * @var int
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -28,7 +28,7 @@ class Calendar extends \CdiCalendar\Entity\AbstractEntity {
      */
     protected $id;
 
-    /**
+     /**
      * @var string
      * @Annotation\Type("Zend\Form\Element\Text")
      * @Annotation\Options({"label":"Nombre:"})
@@ -37,26 +37,12 @@ class Calendar extends \CdiCalendar\Entity\AbstractEntity {
      */
     protected $name;
 
-    /**
-     * @var 
-     * @ORM\OneToMany(targetEntity="CdiCalendar\Entity\Schedule", mappedBy="calendar")
-     */
-    protected $schedule;
-
-    public function __construct() {
-        $this->schedule = new ArrayCollection();
-    }
-
     function getId() {
         return $this->id;
     }
 
     function getName() {
         return $this->name;
-    }
-
-    function getSchedule() {
-        return $this->schedule;
     }
 
     function setId($id) {
@@ -67,12 +53,6 @@ class Calendar extends \CdiCalendar\Entity\AbstractEntity {
         $this->name = $name;
     }
 
-    function setSchedule($schedule) {
-        $this->schedule = $schedule;
-    }
 
-    function addSchedule(\CdiCalendar\Entity\Schedule $schedule) {
-        $this->schedule[] = $schedule;
-    }
 
 }

@@ -1,0 +1,27 @@
+
+<?php
+
+$form = $this->form;
+$form->prepare();
+echo $this->form()->openTag($form);
+?>
+
+
+
+
+<?php echo $this->formHidden($form->get('id')); ?>
+
+<?php $monday = $product->get('monday'); ?>
+<?php echo $this->formRow($monday->get('dayOfWeek')); ?>
+<?php echo $this->formRow($monday->get('startTime')); ?>
+<?php echo $this->formRow($monday->get('endTime')); ?>
+
+<?php $tuesday = $product->get('tuesday'); ?>
+<?php echo $this->formRow($tuesday->get('dayOfWeek')); ?>
+<?php echo $this->formRow($tuesday->get('startTime')); ?>
+<?php echo $this->formRow($tuesday->get('endTime')); ?>
+
+<?PHP
+
+echo $this->form()->closeTag($form);
+?>

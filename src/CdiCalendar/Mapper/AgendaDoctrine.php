@@ -5,7 +5,7 @@ namespace CdiCalendar\Mapper;
 use Doctrine\ORM\EntityManager;
 use CdiCalendar\Options\CalendarOptions;
 
-class CalendarDoctrine 
+class AgendaDoctrine 
 extends \CdiCommons\EventManager\EventProvider 
 implements \CdiCalendar\Mapper\CalendarInterface
  {

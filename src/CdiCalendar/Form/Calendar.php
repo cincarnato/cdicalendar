@@ -12,12 +12,11 @@ use Doctrine\ORM\EntityManager;
 
 class Calendar extends \CdiCommons\Form\BaseForm {
 
-    protected $serviceManager;
 
 
-    public function __construct($serviceManager) {
-        
-        
+    public function __construct() {
+
+
         parent::__construct('CalendarForm');
         $this->setAttribute('method', 'post');
         $this->setAttribute('class', "form-horizontal");
@@ -30,66 +29,41 @@ class Calendar extends \CdiCommons\Form\BaseForm {
             'type' => 'Zend\Form\Element\Hidden',
         ));
 
-
+        $this->addSchedules();
 
         $this->addCsrf();
         $this->addSubmit();
     }
-    
-    public function addMin(){
+
+    protected function addSchedules() {
+        $subForm = new \CdiCalendar\Form\Schedule();
+        $subForm->setName("monday");
+        $subForm->get('dayOfWeek')->setValue('1');
+        $this->add($subForm);
         
-         /*
-         * Input Text
-         */
+         $subForm = new \CdiCalendar\Form\Schedule();
+        $subForm->setName("tuesday");
+          $subForm->get('dayOfWeek')->setValue('2');
+        $this->add($subForm);
+    }
+
+    protected function addCsrf() {
         $this->add(array(
-            'name' => 'title',
-            'type' => 'Zend\Form\Element\Text',
-            'attributes' => array(
-                'required' => false,
-                'class' => "form-control",
-                'placeholder' => "xxx"
-            ),
-            'options' => array(
-                'label' => 'Titulo',
-                'description' => ''
-            )
+            'type' => 'Zend\Form\Element\Csrf',
+            'name' => 'csrf'
         ));
-        
-        /*
-         * Input TextArea
-         */
-        $this->add(array(
-            'name' => 'description',
-            'type' => 'Zend\Form\Element\Textarea',
-            'attributes' => array(
-                'required' => false,
-                'class' => "form-control",
-            ),
-            'options' => array(
-                'label' => 'Descripcion',
-                'description' => ''
-            )
-        ));
-        
-        
-        /*
-         * Input Date
-         */
+    }
+
+    protected function addSubmit() {
 
         $this->add(array(
-            'name' => 'scheduleDate',
-            'type' => 'Zend\Form\Element\Date',
+            'name' => 'submit',
+            'type' => 'Zend\Form\Element\Submit',
             'attributes' => array(
-                'required' => false,
-             'class' => "form-control",
-                  'data-date-format' => 'YYYY/MM/DD HH:II:SS',
-            ),
-            'options' => array(
-                'label' => 'Fecha Y Hora',
-                'description' => ''
+                'type' => 'submit',
+                'value' => 'Cerrar'
             )
         ));
-        
     }
 
     public function InputFilter() {
@@ -99,15 +73,6 @@ class Calendar extends \CdiCommons\Form\BaseForm {
 //
 //        return $inputFilter;
     }
-    
-    function getServiceManager() {
-        return $this->serviceManager;
-    }
-
-    function setServiceManager($serviceManager) {
-        $this->serviceManager = $serviceManager;
-    }
-
 
 
 }

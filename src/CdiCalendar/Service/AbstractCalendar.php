@@ -1,22 +1,22 @@
 <?php
 
-namespace CdiTools\Service;
+namespace CdiCalendar\Service;
 
-use CdiCalendar\Options\CalendarOptionsInterface;
+use CdiCalendar\Options\AgendaOptionsInterface;
 
 /**
  * Description of GoogleApi
  *
  * @author cincarnato
  */
-abstract class AbstractCalendar {
+abstract class AbstractAgenda {
 
     //put your code here
 
     protected $entity;
 
 
-    function __construct(CalendarOptionsInterface $options) {
+    function __construct(AgendaOptionsInterface $options) {
 
         $this->apiId = $options->getApiId();
        

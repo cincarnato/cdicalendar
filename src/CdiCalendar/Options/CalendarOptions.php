@@ -4,16 +4,16 @@ namespace CdiCalendar\Options;
 
 use Zend\Stdlib\AbstractOptions;
 
-class CalendarOptions extends AbstractOptions implements
-CalendarOptionsInterface {
+class AgendaOptions extends AbstractOptions implements
+AgendaOptionsInterface {
 
     protected $calendarEntityClass;
    
-    function getCalendarEntityClass() {
+    function getAgendaEntityClass() {
         return $this->calendarEntityClass;
     }
 
-    function setCalendarEntityClass($calendarEntityClass) {
+    function setAgendaEntityClass($calendarEntityClass) {
         $this->calendarEntityClass = $calendarEntityClass;
     }
 

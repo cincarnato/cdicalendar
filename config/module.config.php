@@ -74,7 +74,19 @@ return array(
             ),
         ),
     ),
-    
+      'doctrine' => array(
+        'driver' => array(
+            'cdicalendar_entity' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'paths' => __DIR__ . '/../src/CdiCalendar/Entity',
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    'CdiCalendar\Entity' => 'cdicalendar_entity',
+                ),
+            ),
+        ),
+    ),
     
     'cdicalendar_options' => array(
         'calendarEntityClass' => 'CdiCalendar/Entity/Calendar',
