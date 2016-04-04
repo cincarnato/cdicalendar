@@ -14,13 +14,11 @@ return array(
     ),
     'router' => array(
         'routes' => array(
-            'cdicaldenar' => array(
-                'child_routes' => array(
                     'agenda' => array(
                         'type' => 'Literal',
                         'priority' => 1000,
                         'options' => array(
-                            'route' => '/agenda',
+                            'route' => '/cdiagenda',
                             'defaults' => array(
                                 'controller' => 'agenda',
                                 'action' => 'index',
@@ -70,8 +68,6 @@ return array(
                                 ),
                             ),
                         ),
-                    ),
-                ),
                 'calendar' => array(
                     'type' => 'segment',
                     'options' => array(
