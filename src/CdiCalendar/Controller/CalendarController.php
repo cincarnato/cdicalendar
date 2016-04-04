@@ -52,11 +52,26 @@ class CalendarController extends AbstractActionController {
         $calendar = new \CdiCalendar\Entity\Calendar();
           $form->setHydrator(new \DoctrineModule\Stdlib\Hydrator\DoctrineObject($this->getEntityManager()));
         $form->bind($calendar);
+      
         $request = $this->getRequest();
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
                 var_dump($calendar);
+                foreach($form->getFieldsets() as $fieldset){
+                    $object = $fieldset->getObject();
+                      var_dump($object);
+                    $calendar->addSchedule($object);
+                    $object->setCalendar($calendar);
+                }
+                
+                
+                $this->getEntityManager()->persist($calendar);
+                  $this->getEntityManager()->flush();
+            }else{
+                var_dump($form->getMessages());
+                
+                     var_dump($calendar);
             }
         }
         return array(

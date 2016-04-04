@@ -83,7 +83,6 @@ class Schedule extends Fieldset  {
 
 
 
-        $this->addCsrf();
         $this->addSubmit();
     }
 

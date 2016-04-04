@@ -14,18 +14,18 @@ echo $this->form()->openTag($form);
 <label><?php echo $this->translate("Monday"); ?></label>
 <?php $monday = $form->get('monday'); ?>
 <?php echo $this->formRow($monday->get('dayOfWeek')); ?>
-<?php echo $this->partial("form/element",array("element" => $monday->get('dayOfWeek'))); ?>
+<?php echo $this->partial("cdi-commons/form/element",array("element" => $monday->get('dayOfWeek'))); ?>
 
-<?php echo $this->partial("form/element",array("element" => $monday->get('startTime'))); ?>
-<?php echo $this->partial("form/element",array("element" => $monday->get('endTime'))); ?>
+<?php echo $this->partial("cdi-commons/form/element",array("element" => $monday->get('startTime'))); ?>
+<?php echo $this->partial("cdi-commons/form/element",array("element" => $monday->get('endTime'))); ?>
 
 <br>
 <label><?php echo $this->translate("Tuesday"); ?></label>
 <?php $tuesday = $form->get('tuesday'); ?>
-<?php echo $this->formRow($tuesday->get('dayOfWeek')); ?>
+<?php echo $this->partial("cdi-commons/form/element",array("element" => $tuesday->get('dayOfWeek'))); ?>
 
-<?php echo $this->formRow($tuesday->get('startTime')); ?>
-<?php echo $this->formRow($tuesday->get('endTime')); ?>
+<?php echo $this->partial("cdi-commons/form/element",array("element" => $tuesday->get('startTime'))); ?>
+<?php echo $this->partial("cdi-commons/form/element",array("element" => $tuesday->get('endTime'))); ?>
 
 <?PHP
  echo $this->formHidden($form->get('csrf'));

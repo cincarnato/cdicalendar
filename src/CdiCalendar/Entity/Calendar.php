@@ -39,7 +39,7 @@ class Calendar extends \CdiCommons\Entity\AbstractEntity {
 
     /**
      * @var 
-     * @ORM\OneToMany(targetEntity="CdiCalendar\Entity\Schedule", mappedBy="calendar")
+     * @ORM\OneToMany(targetEntity="CdiCalendar\Entity\Schedule", mappedBy="calendar", cascade={"persist", "remove"})
      */
     protected $schedule;
 

@@ -35,7 +35,7 @@ class Schedule extends \CdiCommons\Entity\AbstractEntity {
      * "empty_option": "",
      * "target_class":"CdiCalendar\Entity\Calendar",
      * "property": "id"})
-     * @ORM\ManyToOne(targetEntity="CdiCalendar\Entity\Calendar")
+     * @ORM\ManyToOne(targetEntity="CdiCalendar\Entity\Calendar", inversedBy="schedules")
      * @ORM\JoinColumn(name="calendar_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $calendar;
