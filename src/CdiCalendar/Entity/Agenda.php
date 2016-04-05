@@ -2,8 +2,14 @@
 
 namespace CdiCalendar\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Util\ClassUtils;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
+use Doctrine\ORM\Proxy\Proxy;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Zend\InputFilter\InputFilter;
+use Zend\Form\Annotation;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * An example of how to implement a role aware user entity.
@@ -14,13 +20,14 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Cristian Incarnato
  */
 class Agenda extends \CdiCommons\Entity\ExtendedEntity {
-
-    /*
+    /**
      * @var int
      * @ORM\Id
      * @ORM\Column(type="integer")
-     * 
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @Annotation\Type("Zend\Form\Element\Hidden")
      */
+
     protected $id;
 
     /**
@@ -34,8 +41,8 @@ class Agenda extends \CdiCommons\Entity\ExtendedEntity {
      * @ORM\Column(type="string", length=250, unique=false, nullable=true)
      */
     protected $description;
-    
-     /**
+
+    /**
      * Duration in seconds
      * @var int 
      * @ORM\Column(type="integer")
@@ -43,15 +50,13 @@ class Agenda extends \CdiCommons\Entity\ExtendedEntity {
      */
     protected $duration;
 
- 
-
     /**
      * @var DateTime
      * @ORM\Column(type="datetime", unique=false, nullable=true, name="schedule_date")
      */
     protected $scheduledDate;
-    
-       /**
+
+    /**
      * @var string
      * 
      * @ORM\Column(type="boolean", unique=false, nullable=true, name="repeat_enable")
@@ -64,36 +69,33 @@ class Agenda extends \CdiCommons\Entity\ExtendedEntity {
      * @ORM\Column(type="string", length=20, unique=false, nullable=true, name="repeat_by")
      */
     protected $repeatBy;
-    
-    
+
     /**
      * Must be 0,1,2,3,4,5,6
      * @var string
      * @ORM\Column(type="string", length=14, unique=false, nullable=true, name="repeat_day")
      */
     protected $repeatDay;
-    
+
     /**
      * 
      * @var int
      * @ORM\Column(type="integer", length=3, unique=false, nullable=true, name="repeat_every")
      */
     protected $repeatEvery;
-    
 
-     /**
+    /**
      * @var DateTime
      * @ORM\Column(type="datetime", unique=false, nullable=true, name="repeat_finish_date")
      */
     protected $repeatFinishDate;
-   
 
     /**
      * @var Boolean
      * @ORM\Column(type="boolean", unique=false, nullable=true)
      */
     protected $done;
-    
+
     /**
      * @var DateTime
      * @ORM\Column(type="datetime", unique=false, nullable=true, name="done_date")
@@ -214,10 +216,4 @@ class Agenda extends \CdiCommons\Entity\ExtendedEntity {
         $this->doneDate = $doneDate;
     }
 
-
 }
-    
-    
-    
-
-
