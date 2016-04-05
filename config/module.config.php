@@ -14,7 +14,7 @@ return array(
     ),
     'router' => array(
         'routes' => array(
-            'agenda' => array(
+            'cdiagenda' => array(
                 'type' => 'Literal',
                 'priority' => 1000,
                 'options' => array(
@@ -69,7 +69,7 @@ return array(
                     ),
                 ),
             ),
-            'calendar' => array(
+            'cdicalendar' => array(
                 'type' => 'segment',
                 'options' => array(
                     'route' => '/cdicalendar[/:action][/:id]',

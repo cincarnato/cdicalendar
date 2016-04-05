@@ -19,7 +19,7 @@ use Zend\Form\Annotation;
  */
 class Holiday extends \CdiCommons\Entity\AbstractEntity {
 
-      /**
+    /**
      * @var int
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -28,20 +28,21 @@ class Holiday extends \CdiCommons\Entity\AbstractEntity {
      */
     protected $id;
 
-     /**
+    /**
      * @var string
      * @Annotation\Type("Zend\Form\Element\Text")
      * @Annotation\Options({"label":"Name:"})
      * @Annotation\Validator({"name":"StringLength", "options":{"min":1, "max":25}})
-     * @ORM\Column(type="string", length=25, unique=false, nullable=true)
+     * @ORM\Column(type="string", length=25, unique=false, nullable=false)
      */
     protected $name;
-    
-     /**
+
+    /**
      * @var string
      * @Annotation\Type("Zend\Form\Element\Text")
      * @Annotation\Options({"label":"Date:"})
-     * @ORM\Column(type="date", length=25, unique=false, nullable=true)
+     * @Annotation\Validator({"name":"Date", "options":{"format":"Y-m-d"}})
+     * @ORM\Column(type="date", length=25, unique=false, nullable=false)
      */
     protected $date;
 
@@ -68,8 +69,5 @@ class Holiday extends \CdiCommons\Entity\AbstractEntity {
     function setDate($date) {
         $this->date = $date;
     }
-
-
-
 
 }

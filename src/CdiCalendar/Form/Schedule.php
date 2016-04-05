@@ -11,8 +11,7 @@ use Zend\InputFilter\InputFilter;                 // <-- Add this import
 use Doctrine\ORM\EntityManager;
 use Zend\Form\Fieldset;
 
-class Schedule extends Fieldset  {
-
+class Schedule extends Fieldset {
 
     public function __construct($em) {
 
@@ -21,13 +20,12 @@ class Schedule extends Fieldset  {
         $this->setAttribute('method', 'post');
         $this->setAttribute('class', "form-horizontal");
         $this->setAttribute('role', "form");
-        
-         $this
-             ->setHydrator(new DoctrineHydrator($em))
-             ->setObject(new \CdiCalendar\Entity\Schedule())
-         ;
-        
-        
+
+        $this->setHydrator(new DoctrineHydrator($em));
+        $this->setObject(new \CdiCalendar\Entity\Schedule());
+
+
+
         /*
          * Input hidden
          */
@@ -74,7 +72,7 @@ class Schedule extends Fieldset  {
                 'required' => true,
                 'class' => "form-control",
                 'placeholder' => "EndTime",
-                  'value' => '00:00'
+                'value' => '00:00'
             ),
             'options' => array(
                 'label' => 'EndTime',
@@ -141,6 +139,5 @@ class Schedule extends Fieldset  {
 
         return $inputFilter;
     }
-
 
 }

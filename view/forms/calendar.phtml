@@ -1,34 +1,49 @@
 
 <?php
-
-$form = $this->form;
-$form->prepare();
-echo $this->form()->openTag($form);
+$this->form->prepare();
+echo $this->form()->openTag($this->form);
 ?>
 
 
+<div class="row">
 
 
-<?php echo $this->formHidden($form->get('id')); ?>
 
-<label><?php echo $this->translate("Monday"); ?></label>
-<?php $monday = $form->get('monday'); ?>
-<?php echo $this->formRow($monday->get('dayOfWeek')); ?>
-<?php echo $this->partial("cdi-commons/form/element",array("element" => $monday->get('dayOfWeek'))); ?>
+    <?php echo $this->formHidden($form->get('id')); ?>
 
-<?php echo $this->partial("cdi-commons/form/element",array("element" => $monday->get('startTime'))); ?>
-<?php echo $this->partial("cdi-commons/form/element",array("element" => $monday->get('endTime'))); ?>
 
-<br>
-<label><?php echo $this->translate("Tuesday"); ?></label>
-<?php $tuesday = $form->get('tuesday'); ?>
-<?php echo $this->partial("cdi-commons/form/element",array("element" => $tuesday->get('dayOfWeek'))); ?>
+    <?php echo $this->partial("cdi-commons/form/element", array("element" => $this->form->get('name'))); ?>
 
-<?php echo $this->partial("cdi-commons/form/element",array("element" => $tuesday->get('startTime'))); ?>
-<?php echo $this->partial("cdi-commons/form/element",array("element" => $tuesday->get('endTime'))); ?>
 
+</div>
+
+<?php foreach ($this->form->getFieldsets() as $fieldset): ?>
+
+    <div class="row">
+
+        <div class="col-lg-3">
+            <label><?php echo $this->translate(ucfirst($fieldset->getName())); ?></label>
+             <?php echo $this->partial("cdi-commons/form/element", array("element" => $fieldset->get('dayOfWeek'))); ?>
+        </div>   
+
+       
+        <div class="col-lg-4">
+            <?php echo $this->partial("cdi-commons/form/element", array("element" => $fieldset->get('startTime'))); ?>
+        </div>
+
+        <div class="col-lg-4">
+            <?php echo $this->partial("cdi-commons/form/element", array("element" => $fieldset->get('endTime'))); ?>
+        </div>
+
+
+
+    </div>
+
+<?php endforeach; ?>
 <?PHP
- echo $this->formHidden($form->get('csrf'));
- echo $this->formElement($form->get('submit'));
+echo $this->formHidden($form->get('csrf'));
+echo $this->formElement($form->get('submit'));
 echo $this->form()->closeTag($form);
 ?>
+
+

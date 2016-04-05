@@ -74,5 +74,10 @@ class Calendar extends \CdiCommons\Entity\AbstractEntity {
     function addSchedule(\CdiCalendar\Entity\Schedule $schedule) {
         $this->schedule[] = $schedule;
     }
+    
+    public function __toString() {
+        return $this->name();
+    }
+
 
 }
