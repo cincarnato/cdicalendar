@@ -69,5 +69,11 @@ class Holiday extends \CdiCommons\Entity\AbstractEntity {
     function setDate($date) {
         $this->date = $date;
     }
+    
+        
+    public function __toString() {
+        return $this->name;
+    }
+
 
 }

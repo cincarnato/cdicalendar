@@ -76,7 +76,7 @@ class Calendar extends \CdiCommons\Entity\AbstractEntity {
     }
     
     public function __toString() {
-        return $this->name();
+        return $this->name;
     }
 
 
