@@ -117,12 +117,12 @@ class Schedule extends \CdiCommons\Entity\AbstractEntity {
     function setCalendar($calendar) {
         $this->calendar = $calendar;
     }
-
-
-        
+    
     public function __toString() {
         return $this->name;
     }
+
+
 
 
 }

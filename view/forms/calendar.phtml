@@ -20,7 +20,8 @@ echo $this->form()->openTag($this->form);
 <?php foreach ($this->form->getFieldsets() as $fieldset): ?>
 
     <div class="row">
-
+               <?php echo $this->formHidden($fieldset->get('id')); ?>
+           <?php echo $this->formHidden($fieldset->get('calendar')); ?>
         <div class="col-lg-3">
             <label><?php echo $this->translate(ucfirst($fieldset->getName())); ?></label>
              <?php echo $this->partial("cdi-commons/form/element", array("element" => $fieldset->get('dayOfWeek'))); ?>

@@ -39,7 +39,7 @@ class Holiday extends \CdiCommons\Entity\AbstractEntity {
 
     /**
      * @var string
-     * @Annotation\Type("Zend\Form\Element\Text")
+     * @Annotation\Type("Zend\Form\Element\Date")
      * @Annotation\Options({"label":"Date:"})
      * @Annotation\Validator({"name":"Date", "options":{"format":"Y-m-d"}})
      * @ORM\Column(type="date", length=25, unique=false, nullable=false)
@@ -70,7 +70,6 @@ class Holiday extends \CdiCommons\Entity\AbstractEntity {
         $this->date = $date;
     }
     
-        
     public function __toString() {
         return $this->name;
     }

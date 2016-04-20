@@ -36,10 +36,10 @@ class CalendarController extends AbstractActionController {
         $grid->hiddenColumn('updatedAt');
         $grid->hiddenColumn('createdBy');
 
-
+        $grid->addEditOption("Edit", "left", "btn btn-primary fa fa-edit");
         $grid->addDelOption("Del", "left", "btn btn-warning fa fa-trash");
         $grid->addNewOption("Add", "btn btn-primary fa fa-plus", " Agregar");
-        $grid->addEditOption("Edit", "left", "btn btn-primary fa fa-edit");
+        
         $grid->setTableClass("table-condensed customClass");
         $grid->prepare();
         return array('grid' => $grid);
@@ -136,9 +136,10 @@ class CalendarController extends AbstractActionController {
 
                 foreach ($form->getFieldsets() as $fieldset) {
                     $object = $fieldset->getObject();
-                    $calendar->addSchedule($object);
                     $object->setCalendar($calendar);
                 }
+                
+                
                 try {
                     $this->getEntityManager()->persist($calendar);
                     $this->getEntityManager()->flush();

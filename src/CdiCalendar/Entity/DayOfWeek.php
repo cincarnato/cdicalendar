@@ -53,11 +53,9 @@ class DayOfWeek extends \CdiCommons\Entity\AbstractEntity {
         $this->name = $name;
     }
 
-        
     public function __toString() {
         return $this->name;
     }
-
 
 
 }

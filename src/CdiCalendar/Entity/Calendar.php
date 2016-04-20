@@ -44,7 +44,7 @@ class Calendar extends \CdiCommons\Entity\AbstractEntity {
     protected $schedule;
 
     public function __construct() {
-        $this->schedule = new ArrayCollection();
+        $this->schedule = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     function getId() {

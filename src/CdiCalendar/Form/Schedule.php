@@ -26,19 +26,21 @@ class Schedule extends Fieldset {
 
 
 
-        /*
-         * Input hidden
-         */
-        $this->add(array(
-            'name' => 'id',
-            'type' => 'Zend\Form\Element\Hidden',
-        ));
+  
 
         /*
          * Calendar
          */
         $this->add(array(
             'name' => 'calendar',
+            'type' => 'Zend\Form\Element\Hidden',
+        ));
+        
+              /*
+         * Input hidden
+         */
+        $this->add(array(
+            'name' => 'id',
             'type' => 'Zend\Form\Element\Hidden',
         ));
 
